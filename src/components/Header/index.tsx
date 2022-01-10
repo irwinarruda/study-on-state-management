@@ -27,25 +27,51 @@ const Header = ({}: HeaderProps) => {
                         <div className="hidden sm:block sm:ml-6">
                             <div className="flex space-x-4">
                                 <Link
-                                    href="/mobx"
+                                    href="/context"
                                     activeClassName="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
+                                    exact
                                 >
                                     <a
                                         className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                                         aria-current="page"
                                     >
-                                        Mobx
+                                        Context
                                     </a>
                                 </Link>
                                 <Link
                                     href="/context-selector"
                                     activeClassName="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
+                                    exact
                                 >
                                     <a
                                         className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                                         aria-current="page"
                                     >
                                         Context Selector
+                                    </a>
+                                </Link>
+                                <Link
+                                    href="/react-tracked"
+                                    activeClassName="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
+                                    exact
+                                >
+                                    <a
+                                        className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                                        aria-current="page"
+                                    >
+                                        React Tracked
+                                    </a>
+                                </Link>
+                                <Link
+                                    href="/mobx"
+                                    activeClassName="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
+                                    exact
+                                >
+                                    <a
+                                        className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                                        aria-current="page"
+                                    >
+                                        Mobx
                                     </a>
                                 </Link>
                             </div>

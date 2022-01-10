@@ -1,19 +1,25 @@
 import React from "react";
 
-type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {};
+type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
+    label: string;
+    name: string;
+    containerClassName?: string;
+};
 
-const Input = ({ ...props }: InputProps) => {
+const Input = ({ label, name, containerClassName, ...props }: InputProps) => {
     return (
-        <div className="col-span-6 sm:col-span-3">
+        <div className={containerClassName || ""}>
             <label
-                htmlFor="first-name"
-                className="block text-sm font-medium text-gray-700"
+                htmlFor={name}
+                className="block text-gray-700 text-sm font-bold mb-2"
             >
-                First name
+                {label}
             </label>
             <input
+                id={name}
+                name={name}
                 {...props}
-                className="px-4 py-2 mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             />
         </div>
     );

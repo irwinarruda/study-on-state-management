@@ -5,7 +5,7 @@ module.exports = {
         return [
             {
                 source: "/",
-                destination: "/mobx",
+                destination: "/context",
                 permanent: true,
             },
         ];

@@ -3,20 +3,14 @@ import type { NextPage } from "next";
 
 import { Input } from "../../components/Input";
 
-import {
-    usePersonContext,
-    PersonsProvider,
-    selectForm,
-    selectList,
-    selectView,
-} from "../../stores/context-selector";
+import { usePersonContext, PersonsProvider } from "../../stores/context";
 
 const Form = () => {
     const [name, setName] = React.useState<string>("");
     const [email, setEmail] = React.useState<string>("");
     const [age, setAge] = React.useState<number>(0);
 
-    const { addPerson } = usePersonContext("selectForm");
+    const { addPerson } = usePersonContext();
 
     const handleSubmit = () => {
         addPerson({ name, email, age });
@@ -59,7 +53,7 @@ const Form = () => {
 };
 
 const List = () => {
-    const { people, selectPerson } = usePersonContext("selectList");
+    const { people, selectPerson } = usePersonContext();
     return (
         <div className="w-1/3 ml-10 mt-2">
             {people.map((person, i) => (
@@ -81,40 +75,40 @@ const List = () => {
 };
 
 const Info = () => {
-    const ctx = usePersonContext("selectView");
+    const { selectedPerson } = usePersonContext();
     return (
         <div className="w-1/3 ml-10 mt-2">
             <p>
                 Idade:{" "}
                 <span className="font-semibold">
-                    {ctx.selectedPerson?.name || "-"}
+                    {selectedPerson?.name || "-"}
                 </span>
             </p>
             <p>
                 Email:{" "}
                 <span className="font-semibold">
-                    {ctx.selectedPerson?.email || "-"}
+                    {selectedPerson?.email || "-"}
                 </span>
             </p>
             <p>
                 Idade:{" "}
                 <span className="font-semibold">
-                    {ctx.selectedPerson?.age || "-"}
+                    {selectedPerson?.age || "-"}
                 </span>
             </p>
         </div>
     );
 };
 
-type ContexSelectorProps = {
+type ContextProps = {
     children?: React.ReactNode;
 };
 
-const ContexSelector: NextPage<ContexSelectorProps> = ({}) => {
+const Context: NextPage<ContextProps> = ({}) => {
     return (
         <PersonsProvider>
             <div className="max-w-7xl mt-6 mx-auto px-2 sm:px-6 lg:px-8">
-                <h2 className="text-3xl font-semibold">Contex Selector</h2>
+                <h2 className="text-3xl font-semibold">Context</h2>
                 <div className="flex mt-4">
                     <Form />
                     <List />
@@ -125,4 +119,4 @@ const ContexSelector: NextPage<ContexSelectorProps> = ({}) => {
     );
 };
 
-export default ContexSelector;
+export default Context;
