@@ -74,6 +74,18 @@ const Header = ({}: HeaderProps) => {
                                         Mobx
                                     </a>
                                 </Link>
+                                <Link
+                                    href="/mobx-state-tree"
+                                    activeClassName="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
+                                    exact
+                                >
+                                    <a
+                                        className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                                        aria-current="page"
+                                    >
+                                        Mobx State Tree
+                                    </a>
+                                </Link>
                             </div>
                         </div>
                     </div>

@@ -107,7 +107,7 @@ type MobxProps = {
 const Mobx: NextPage<MobxProps> = ({}) => {
     return (
         <div className="max-w-7xl mt-6 mx-auto px-2 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-semibold">Mobx</h2>
+            <h2 className="text-3xl font-semibold">Mobx State Tree</h2>
             <div className="flex mt-4">
                 <Form />
                 <List />
