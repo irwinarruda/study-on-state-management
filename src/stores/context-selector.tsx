@@ -117,11 +117,11 @@ type NeededStatesKeys = keyof typeof neededStates;
 
 const usePersonContext = <T extends NeededStatesKeys>(key: T) => {
     let hooks = {} as Pick<UsePersonReturn, typeof neededStates[T][number]>;
-    const selector = React.useCallback(
-        (ctx) => genericSelector(ctx, neededStates[key]),
-        [key]
+    hooks = useContextSelector(
+        PersonsContext,
+        genericSelector(neededStates[key] as any),
+        shallowEqual
     );
-    hooks = useContextSelector(PersonsContext, selector, shallowEqual);
     return hooks;
 };
 
