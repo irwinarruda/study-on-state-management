@@ -25,7 +25,8 @@ export const useContextSelector = <T extends any, R extends any>(
             prevValue = nextValue;
             return nextValue;
         };
-    }, [selector, isEql]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isEql]);
 
     return useSelectorContext(ctx, patchedSelector);
 };
@@ -116,12 +117,11 @@ type NeededStatesKeys = keyof typeof neededStates;
 // This implementation came from the issue https://github.com/dai-shi/use-context-selector/issues/19
 
 const usePersonContext = <T extends NeededStatesKeys>(key: T) => {
-    let hooks = {} as Pick<UsePersonReturn, typeof neededStates[T][number]>;
-    hooks = useContextSelector(
+    const hooks = useContextSelector(
         PersonsContext,
         genericSelector(neededStates[key] as any),
         shallowEqual
-    );
+    ) as Pick<UsePersonReturn, typeof neededStates[T][number]>;
     return hooks;
 };
 

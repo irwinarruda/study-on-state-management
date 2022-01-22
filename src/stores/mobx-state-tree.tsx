@@ -1,5 +1,7 @@
 import React from "react";
+import { Provider } from "react-redux";
 import { types } from "mobx-state-tree";
+import { asReduxStore, connectReduxDevtools } from "mst-middlewares";
 
 import { Person } from "../entites/Person";
 
@@ -33,6 +35,9 @@ const INITIAL_STATE = {
 };
 
 const store = RootStore.create(INITIAL_STATE);
+// if (window) {
+//     (window as any).persons = persons;
+// }
 
 type UsePersonReturn = {
     people: Person[];
@@ -45,4 +50,11 @@ const usePersonContext = (): UsePersonReturn => {
     return store;
 };
 
-export { usePersonContext };
+// Attempt to connect mobx-state-tree with redux devtools
+connectReduxDevtools(require("remotedev"), store);
+const reduxStore = asReduxStore(store);
+const PersonsProvider: React.FC = ({ children }) => {
+    return <Provider store={reduxStore as any}>{children}</Provider>;
+};
+
+export { usePersonContext, PersonsProvider };

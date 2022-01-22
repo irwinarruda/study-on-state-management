@@ -3,7 +3,10 @@ import { observer } from "mobx-react-lite";
 import type { NextPage } from "next";
 
 import { Input } from "../../components/Input";
-import { usePersonContext } from "../../stores/mobx-state-tree";
+import {
+    usePersonContext,
+    PersonsProvider,
+} from "../../stores/mobx-state-tree";
 
 const Form = observer(() => {
     const [name, setName] = React.useState<string>("");
@@ -106,14 +109,16 @@ type MobxProps = {
 
 const Mobx: NextPage<MobxProps> = ({}) => {
     return (
-        <div className="max-w-7xl mt-6 mx-auto px-2 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-semibold">Mobx State Tree</h2>
-            <div className="flex mt-4">
-                <Form />
-                <List />
-                <Info />
+        <PersonsProvider>
+            <div className="max-w-7xl mt-6 mx-auto px-2 sm:px-6 lg:px-8">
+                <h2 className="text-3xl font-semibold">Mobx State Tree</h2>
+                <div className="flex mt-4">
+                    <Form />
+                    <List />
+                    <Info />
+                </div>
             </div>
-        </div>
+        </PersonsProvider>
     );
 };
 
